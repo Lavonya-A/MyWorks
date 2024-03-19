@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<head>
+   
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3fe3e9;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #3fe3e9;
+            padding: 0px;
+            text-align: center;
+            color: #f2eeee;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <title> Foodie_Pandaa </title>
+</head>
+<body>
+    <header>
+        <img src="logo.png"  height="100px" width="100px">
+        <a href="Add_Cart.html" id="viewCartLink">
+        <img src="Food_Shopping_Logo.png" height="100px" weight="100px" style="float:right; margin-top: 90px;">
+        </a>
+        <h1> Hey Buddy! Let's Have A Feast Today! </h1>
+    </header>
+
+    <section>
+        <div class="product">
+            <img src="Parotta.jpeg" alt="1" height="75px" width="75px">
+            <h2> Parotta </h2>
+            <p>Price: $5.00 </p>
+            <button onclick="addToCart('Parotta', 5.00);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Chicken_Briyani.jpeg" alt="1" height="75px" width="75px">
+            <h2> Chicken Briyani </h2>
+            <p>Price: $9.49</p>
+            <button onclick="addToCart('Chicken Briyani', 9.49);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Naan.jpeg" alt="1" height="75px" width="75px">
+            <h2> Naan </h2>
+            <p>Price: $8.20</p>
+            <button onclick="addToCart('Naan', 8.20);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Grill_Chicken.jpeg" alt="1" height="75px" width="75px">
+            <h2> Grill Chicken </h2>
+            <p>Price: $30.00</p>
+            <button onclick="addToCart('Grill Chicken', 30.00);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Butter_chicken.jpeg" alt="1" height="75px" width="75px">
+            <h2> Butter Chicken </h2>
+            <p>Price: $40.00</p>
+            <button onclick="addToCart('Butter Chicken', 40.00);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Chicken_Friedrice.jpeg" alt="1" height="75px" width="75px">
+            <h2> FriedRice </h2>
+            <p>Price: $17.50</p>
+            <button onclick="addToCart('FriedRice', 17.50);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Chicken_Noodles.jpeg" alt="1" height="75px" width="75px">
+            <h2> Chicken Noodles </h2>
+            <p>Price: $18.00</p>
+            <button onclick="addToCart('Chicken Noodles', 18.00);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Chilli Parotta.jpg" alt="1" height="75px" width="75px">
+            <h2> Chilly Parotta </h2>
+            <p>Price: $13.49</p>
+            <button onclick="addToCart('Chilly Parotta', 13.49);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Non-veg_meals.jpeg" alt="1" height="75px" width="75px">
+            <h2> Non-veg Meals </h2>
+            <p>Price: $30.95</p>
+            <button onclick="addToCart('Non-veg Meals', 30.95);alertCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="Omelette.jpg" alt="1" height="75px" width="75px">
+            <h2> Omelette </h2>
+            <p>Price: $4.00</p>
+            <button onclick="addToCart('Omelette', 4.00);alertCart()">Add to Cart</button>
+        </div>
+
+    </section>
+
+    <script>
+        function addToCart(itemName, itemPrice) {
+            // Retrieve the current cart parameters from the View Cart link
+            var viewCartLink = document.getElementById("viewCartLink");
+            var currentParams = viewCartLink.href.split('?')[1] || '';
+
+            // Create a unique key for the new item
+            var key = new Date().getTime();
+
+            // Append the new item parameters to the existing ones
+            var newParams = currentParams + "&itemName" + key + "=" + encodeURIComponent(itemName) + "&itemPrice" + key + "=" + encodeURIComponent(itemPrice);
+
+            // Update the View Cart link with the new parameters
+            viewCartLink.href = "Add_Cart.html?" + newParams;
+        }
+        function alertCart() 
+ { 
+  alert("Product is added to cart"); 
+ } 
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Foodie_Pandaa . All rights reserved.</p>
+    </footer>
+</body>
+</html>

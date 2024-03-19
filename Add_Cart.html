@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Cart Page</title>
+</head>
+<body>
+
+    <h2>Shopping Cart</h2>
+
+    <div id="cartList">
+        <!-- Display the cart items here -->
+    </div>
+
+    <a href="foodie_select.html">Back to Shopping</a>
+
+    <script>
+        function displayCart() {
+            var cartListContainer = document.getElementById("cartList");
+
+            // Retrieve the item parameters from the URL
+            var urlSearchParams = new URLSearchParams(window.location.search);
+            var items = [];
+
+            // Iterate over each parameter and extract the itemName and itemPrice
+            urlSearchParams.forEach(function (value, key) {
+                if (key.startsWith('itemName')) {
+                    var index = key.substring(8); // Extract the index from the parameter name
+                    var itemName = value;
+                    var itemPrice = urlSearchParams.get('itemPrice' + index);
+                    items.push({ name: itemName, price: parseFloat(itemPrice) });
+                }
+            });
+
+            // Clear the existing content
+            cartListContainer.innerHTML = "";
+
+            // Display each item in the cart
+            for (var i = 0; i < items.length; i++) {
+                var listItem = document.createElement("p");
+                listItem.innerHTML = "<strong>" + items[i].name + "</strong>: $" + items[i].price.toFixed(2);
+                cartListContainer.appendChild(listItem);
+            }
+        }
+
+        // Call the displayCart function when the page loads
+        displayCart();
+    </script>
+
+</body>
+</html>
